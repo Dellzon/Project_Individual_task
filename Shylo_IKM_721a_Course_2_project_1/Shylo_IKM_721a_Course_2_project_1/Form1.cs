@@ -12,7 +12,7 @@ namespace Shylo_IKM_721a_Course_2_project_1
 {
     public partial class Form1 : Form
     {
-        private bool Mode;// Режим дозволу / заборони введення даних
+        private bool Mode;// Режим дозволу / заборони введення даних 
 
         public Form1()
         {
