@@ -12,8 +12,8 @@ namespace Shylo_IKM_721a_Course_2_project_1
 {
     public partial class Form1 : Form
     {
-        private bool Mode;// Режим дозволу / заборони введення даних
-        private MajorWork MajorObject; // Створення об'єкта класу MajorWork
+        private bool Mode;// Режим дозволу / заборони введення даних 
+
         public Form1()
         {
             InitializeComponent();
@@ -28,10 +28,6 @@ namespace Shylo_IKM_721a_Course_2_project_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            About A = new About(); // створення форми About
-            A.tAbout.Start();
-            A.ShowDialog(); // відображення діалогового вікна About
-            MajorObject = new MajorWork();
             this.Mode = true;
         }
 
@@ -51,9 +47,6 @@ namespace Shylo_IKM_721a_Course_2_project_1
                 tClock.Stop();
                 bStart.Text = "Пуск";// зміна тексту на кнопці на "Пуск"
                 this.Mode = true;
-                MajorObject.Write(tbInput.Text);// Запис даних у об'єкт
-                MajorObject.Task();// Обробка даних
-                label1.Text = MajorObject.Read();// Відображення результату
             }
         }
 
@@ -73,7 +66,6 @@ namespace Shylo_IKM_721a_Course_2_project_1
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
-
         }
     }
 }
