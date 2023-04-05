@@ -121,6 +121,7 @@
             this.новийToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.новийToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.новийToolStripMenuItem.Text = "Новий";
+            this.новийToolStripMenuItem.Click += new System.EventHandler(this.новийToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -146,6 +147,7 @@
             this.зберегтиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // зберегтиЯкToolStripMenuItem
             // 
@@ -212,9 +214,16 @@
             this.проПрограмуToolStripMenuItem.Text = "Про програму";
             this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
             // 
+            // sfdSave
+            // 
+            this.sfdSave.DefaultExt = "SoM";
+            this.sfdSave.Filter = "рабочі файи|*.SoM|усі файли|*.*";
+            // 
             // ofdOpen
             // 
+            this.ofdOpen.DefaultExt = "SoM";
             this.ofdOpen.FileName = "openFileDialog1";
+            this.ofdOpen.Filter = "рабочі файи|*.SoM|усі файли|*.*";
             // 
             // Form1
             // 
@@ -228,6 +237,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
