@@ -27,5 +27,14 @@ namespace Shylo_IKM_721a_Course_2_project_1
             Close();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            if (progressBar1.Value < 100)
+            {
+                progressBar1.Value += 1;
+            }
+            timer1.Start();
+        }
     }
 }
