@@ -26,20 +26,68 @@ namespace Shylo_IKM_721a_Course_2_project_1
         public Queue myQueue = new Queue();
         public string[] smyQueue = new string[100];
 
-        private string SaveFileName;// ім’я файлу для запису
-        private string OpenFileName;// ім’я файлу для читання
-        public void WriteSaveFileName(string S)// метод запису даних в об'єкт
+        private string SaveTextFileName;// ім’я файлу для запису
+        private string OpenTextFileName;
+        public void WriteOpenTextFileName(string S)
         {
-            this.SaveFileName = S;// запам'ятати ім’я файлу для запису
+            this.OpenTextFileName = S;
         }
-        public void WriteOpenFileName(string S)
+        public void WriteSaveTextFileName(string S)
         {
-            this.OpenFileName = S;// запам'ятати ім’я файлу для відкриття
+            this.SaveTextFileName = S;
         }
+        
 
+        public bool SaveTextFileNameExists()
+        {
+            if (this.SaveTextFileName == null)
+                return false;
+            else return true;
+        }
+        public string ReadSaveTextFileName()
+        {
+            return SaveTextFileName;
+        }
+        public void SaveToTextFile(string name, System.Windows.Forms.DataGridView D)
+        {
+            try
+            {
+                System.IO.StreamWriter textFile;
+                if (!File.Exists(name))
+                {
+                    textFile = new System.IO.StreamWriter(name);
+                }
+                else
+                {
+                    textFile = new System.IO.StreamWriter(name, true);
+                }
+                for (int i = 0; i < D.RowCount - 1; i++)
+                {
+                    textFile.WriteLine("{0};{1};{2}", D[0, i].Value.ToString(), D[1,
 
-        // Методи
-        public void Find(string Num) // пошук
+                    i].Value.ToString(), D[2, i].Value.ToString());
+
+                }
+                textFile.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Помилка роботи з файлом ");
+            }
+        }
+        private string SaveFileName;//ім'я файлу для запису
+        private string OpenFileName;//ім'я файлу для читання
+
+        public void WriteSaveFileName(string S)//метод запису даних в об'єкт 
+            {
+            this.SaveTextFileName = S;//запам'ятати ім'я файлу для запису
+            }
+        public void WritetOpenFileName(string S)
+            {
+            this.OpenFileName = S;//запам'ятати ім'я файлу для відкриття
+            }
+    // Методи
+    public void Find(string Num) // пошук
         {
             int N;
             try
@@ -244,5 +292,6 @@ namespace Shylo_IKM_721a_Course_2_project_1
             this.Modify = true; // Дозвіл запису
         }
 
+        
     }
 }
