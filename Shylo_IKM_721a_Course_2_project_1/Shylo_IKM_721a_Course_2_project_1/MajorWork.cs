@@ -80,7 +80,7 @@ namespace Shylo_IKM_721a_Course_2_project_1
 
         public void WriteSaveFileName(string S)//метод запису даних в об'єкт 
             {
-            this.SaveTextFileName = S;//запам'ятати ім'я файлу для запису
+            this.SaveFileName = S;//запам'ятати ім'я файлу для запису
             }
         public void WritetOpenFileName(string S)
             {
