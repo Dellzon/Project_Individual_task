@@ -97,6 +97,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.port = new System.IO.Ports.SerialPort(this.components);
+            this.tbOutput = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -115,7 +116,7 @@
             // 
             // bStart
             // 
-            this.bStart.Location = new System.Drawing.Point(427, 215);
+            this.bStart.Location = new System.Drawing.Point(432, 215);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(173, 41);
             this.bStart.TabIndex = 0;
@@ -126,20 +127,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(492, 40);
+            this.label1.Location = new System.Drawing.Point(497, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(33, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Text = "true";
             // 
             // tbInput
             // 
             this.tbInput.Enabled = false;
-            this.tbInput.Location = new System.Drawing.Point(239, 106);
+            this.tbInput.Location = new System.Drawing.Point(239, 104);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(586, 22);
             this.tbInput.TabIndex = 2;
             this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
+            this.tbInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbInput_KeyUp);
             // 
             // tClock
             // 
@@ -356,6 +358,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tbOutput);
             this.tabPage1.Controls.Add(this.bStart);
             this.tabPage1.Controls.Add(this.tbInput);
             this.tabPage1.Controls.Add(this.label1);
@@ -772,6 +775,14 @@
             // 
             this.port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.port_DataReceived);
             // 
+            // tbOutput
+            // 
+            this.tbOutput.Enabled = false;
+            this.tbOutput.Location = new System.Drawing.Point(239, 157);
+            this.tbOutput.Name = "tbOutput";
+            this.tbOutput.Size = new System.Drawing.Size(586, 22);
+            this.tbOutput.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -882,6 +893,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbOutput;
     }
 }
 

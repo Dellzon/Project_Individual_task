@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.IO.Ports;
+using System.Collections.Generic;
 
 namespace Shylo_IKM_721a_Course_2_project_1
 {
@@ -110,9 +111,19 @@ namespace Shylo_IKM_721a_Course_2_project_1
                 bStart.Text = "Пуск";// зміна тексту на кнопці на "Пуск"
                 this.Mode = true;
                 MajorObject.Write(tbInput.Text);// Запис даних у об'єкт
+                MajorObject.Write(tbOutput.Text);// Запис даних у об'єкт
                 MajorObject.Task();// Обробка даних
                 label1.Text = MajorObject.Read();// Відображення результату
                 пускToolStripMenuItem.Text = "Старт";
+            }
+        }
+
+        static IEnumerable<TKey> GetReversedKeys<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        {
+            // Повертаємо ключі словника у зворотному порядку
+            for (int i = dictionary.Count - 1; i >= 0; i--)
+            {
+                yield return dictionary.Keys.ElementAt(i);
             }
         }
 
@@ -121,18 +132,63 @@ namespace Shylo_IKM_721a_Course_2_project_1
             tClock.Stop();
             tClock.Start();
 
-            if ((e.KeyChar >= '0') & (e.KeyChar <= '9') | (e.KeyChar == (char)8))
+            if ((e.KeyChar >= 'a') & (e.KeyChar <= 'z') | (e.KeyChar == ' ') | (e.KeyChar == '.') | (e.KeyChar == (char)8) | (e.KeyChar == (char)13))
             {
+                if (label1.Text == "false")
+                    if ((e.KeyChar != (char)8) & (e.KeyChar != ' '))
+                        e.KeyChar = (char)0;
+                    else
+                        label1.Text = "true";
+
+                string[] words = tbInput.Text.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if ((words.LongCount() == 5 && e.KeyChar == ' ') || (words.LongCount() == 5 && words[4].Length > 8) && e.KeyChar != (char)8)
+                {
+                    label1.Text = "false";
+                    e.KeyChar = (char)0;
+                }
                 return;
             }
             else
             {
                 tClock.Stop();
-                MessageBox.Show("Неправильний символ", "Помилка");
+               MessageBox.Show("Неправильний символ", "Помилка");
+                label1.Text = "false";
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
 
+        }
+        private void tbInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            label1.Text = "true";
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+
+            string[] words = tbInput.Text.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string word in words)
+            {
+                if (dictionary.ContainsKey(word))
+                {
+                    dictionary.Remove(word);
+                }
+                else
+                {
+                    dictionary.Add(word, 1);
+                }
+
+                if (word.Length > 8)
+                {
+                    label1.Text = "false";
+                }
+            }
+
+            tbOutput.Text = "";
+            foreach (string word in GetReversedKeys(dictionary))
+            {
+                tbOutput.Text += " " + word;
+            }
+            tbOutput.Text += ".";
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -500,5 +556,6 @@ namespace Shylo_IKM_721a_Course_2_project_1
                 SetText(InputData);
             }
         }
+
     }
 }
