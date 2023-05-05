@@ -118,15 +118,14 @@ namespace Shylo_IKM_721a_Course_2_project_1
             }
         }
 
-        static IEnumerable<TKey> GetReversedKeys<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        static IEnumerable<string> GetReversed(List<string> elements)
         {
-            // Повертаємо ключі словника у зворотному порядку
-            for (int i = dictionary.Count - 1; i >= 0; i--)
+            for (int i = elements.Count - 1; i >= 0; i--)
             {
-                yield return dictionary.Keys.ElementAt(i);
+                yield return elements[i];
             }
-        }
 
+        }
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             tClock.Stop();
@@ -162,20 +161,16 @@ namespace Shylo_IKM_721a_Course_2_project_1
         private void tbInput_KeyUp(object sender, KeyEventArgs e)
         {
             label1.Text = "true";
-            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            List<string> elements = new List<string>();
 
             string[] words = tbInput.Text.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string word in words)
             {
-                if (dictionary.ContainsKey(word))
-                {
-                    dictionary.Remove(word);
-                }
+                if (elements.Contains(word))
+                    elements.Remove(word);
                 else
-                {
-                    dictionary.Add(word, 1);
-                }
+                    elements.Add(word);
 
                 if (word.Length > 8)
                 {
@@ -184,7 +179,7 @@ namespace Shylo_IKM_721a_Course_2_project_1
             }
 
             tbOutput.Text = "";
-            foreach (string word in GetReversedKeys(dictionary))
+            foreach (string word in GetReversed(elements))
             {
                 tbOutput.Text += " " + word;
             }
