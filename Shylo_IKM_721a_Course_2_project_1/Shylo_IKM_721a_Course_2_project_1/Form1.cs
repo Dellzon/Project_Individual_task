@@ -111,9 +111,9 @@ namespace Shylo_IKM_721a_Course_2_project_1
                 bStart.Text = "Пуск";// зміна тексту на кнопці на "Пуск"
                 this.Mode = true;
                 MajorObject.Write(tbInput.Text);// Запис даних у об'єкт
-                MajorObject.Write(tbOutput.Text);// Запис даних у об'єкт
+                MajorObject.Write_r(tbOutput.Text);// Запис даних у об'єкт
                 MajorObject.Task();// Обробка даних
-                label1.Text = MajorObject.Read();// Відображення результату
+                //label1.Text = MajorObject.Read();// Відображення результату
                 пускToolStripMenuItem.Text = "Старт";
             }
         }

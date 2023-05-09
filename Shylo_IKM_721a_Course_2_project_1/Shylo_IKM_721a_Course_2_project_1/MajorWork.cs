@@ -274,21 +274,24 @@ namespace Shylo_IKM_721a_Course_2_project_1
         {
             this.Data = D;
         }
+        public void Write_r(string D)// метод запису даних в об'єкт.
+        {
+            this.Result = D;
+        }
         public string Read()
         {
             return this.Result;// метод відображення результату
         }
         public void Task() // метод реалізації програмного завдання
         {
-            if (this.Data.Length > 5)
-            {
-                this.Result = Convert.ToString(true);
-
-            }
-            else
-            {
-                this.Result = Convert.ToString(false);
-            }
+            //if (this.Data.Length > 5)
+            //{
+                //this.Result = Convert.ToString(true);
+            //}
+            //else
+            //{
+                //this.Result = Convert.ToString(false);
+            //}
             this.Modify = true; // Дозвіл запису
         }
 
